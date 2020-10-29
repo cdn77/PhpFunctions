@@ -1,0 +1,29 @@
+{
+    "name": "library/functions",
+    "type": "library",
+    "license": "proprietary",
+    "description": "PHP Functions",
+    "keywords": [
+        "php",
+        "functions",
+        "ds",
+        "generators",
+        "never"
+    ],
+    "authors": [
+        {
+            "name": "Simon Podlipsky",
+            "email": "simon@podlipsky.net"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php-64bit": "^7.4",
+        "ext-ds": "*"
+    },
+    "autoload": {
+        "files": ["src/functions_include.php"]
+    }
+}
