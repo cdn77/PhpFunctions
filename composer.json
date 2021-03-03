@@ -25,5 +25,21 @@
     },
     "autoload": {
         "files": ["src/functions_include.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cdn77\\Functions\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "cdn77/coding-standard": "^4.0",
+        "infection/infection": "^0.20.0",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.80",
+        "phpstan/phpstan-phpunit": "^0.12.16",
+        "phpunit/phpunit": "^9.4",
+        "psalm/plugin-phpunit": "^0.15.1",
+        "roave/infection-static-analysis-plugin": "^1.7",
+        "vimeo/psalm": "^4.6"
     }
 }
