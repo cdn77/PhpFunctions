@@ -15,7 +15,6 @@ final class NeverTest extends TestCase
     {
         $this->expectException(Throwable::class);
 
-        /** @psalm-suppress UnusedFunctionCall */
         never();
     }
 }
