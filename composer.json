@@ -33,6 +33,7 @@
     },
     "require-dev": {
         "cdn77/coding-standard": "^4.0",
+        "icanhazstring/composer-unused": "^0.7.5",
         "infection/infection": "^0.20.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.80",
@@ -41,5 +42,10 @@
         "psalm/plugin-phpunit": "^0.15.1",
         "roave/infection-static-analysis-plugin": "^1.7",
         "vimeo/psalm": "4.7.0"
+    },
+    "extra": {
+        "unused": [
+            "ext-ds"
+        ]
     }
 }

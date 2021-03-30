@@ -22,6 +22,10 @@ cs: vendor
 fix:
 	vendor/bin/phpcbf
 
+.PHONY: composer-unused
+composer-unused:
+	vendor/bin/composer-unused
+
 .PHONY: static-analysis
 static-analysis: phpstan # templates compatibility, @todo update when support for Psalm is added
 
