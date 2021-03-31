@@ -2,12 +2,6 @@ include:
     -   project: ci-cd/templates
         file: 'php/php.yaml'
 
-default:
-    image: registry.gitlab.cdn77.eu/library/functions/build
-
-Build Image:
-    extends: .build-image
-
 Infection:
     extends: .job
     script: make infection
@@ -15,3 +9,6 @@ Infection:
 Static Analysis (Psalm):
     extends: .job
     script: make psalm
+
+variables:
+    PHP_EXTENSIONS: dom ds json mbstring pcov simplexml xml xmlwriter

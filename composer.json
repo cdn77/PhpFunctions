@@ -32,6 +32,7 @@
         }
     },
     "require-dev": {
+        "ext-pcov": "*",
         "cdn77/coding-standard": "^4.0",
         "icanhazstring/composer-unused": "^0.7.5",
         "infection/infection": "^0.20.0",
