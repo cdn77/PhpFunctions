@@ -36,6 +36,7 @@
         "cdn77/coding-standard": "^4.0",
         "icanhazstring/composer-unused": "^0.7.5",
         "infection/infection": "^0.20.0",
+        "maglnet/composer-require-checker": "^3.2",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.80",
         "phpstan/phpstan-phpunit": "^0.12.16",

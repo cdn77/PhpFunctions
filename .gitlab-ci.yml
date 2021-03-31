@@ -10,5 +10,13 @@ Static Analysis (Psalm):
     extends: .job
     script: make psalm
 
+Missing Composer Requirements:
+    extends: .job
+    script: make composer-requirements
+
+Unused Composer Requirements:
+    extends: .job
+    script: make composer-unused
+
 variables:
     PHP_EXTENSIONS: dom ds json mbstring pcov simplexml xml xmlwriter
