@@ -33,17 +33,17 @@
     },
     "require-dev": {
         "ext-pcov": "*",
-        "cdn77/coding-standard": "^4.0",
-        "icanhazstring/composer-unused": "^0.7.5",
-        "infection/infection": "^0.20.0",
-        "maglnet/composer-require-checker": "^3.2",
-        "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^0.12.80",
-        "phpstan/phpstan-phpunit": "^0.12.16",
-        "phpunit/phpunit": "^9.4",
-        "psalm/plugin-phpunit": "^0.15.1",
-        "roave/infection-static-analysis-plugin": "^1.7",
-        "vimeo/psalm": "4.7.0"
+        "cdn77/coding-standard": "^5.0",
+        "icanhazstring/composer-unused": "^0.7.6",
+        "infection/infection": "^0.23.0",
+        "maglnet/composer-require-checker": "^3.3",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^0.12.92",
+        "phpstan/phpstan-phpunit": "^0.12.21",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.16.1",
+        "roave/infection-static-analysis-plugin": "^1.8",
+        "vimeo/psalm": "^4.8"
     },
     "extra": {
         "unused": [

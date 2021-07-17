@@ -14,6 +14,7 @@ use Ds\Vector;
  *
  * @param iterable<mixed, mixed> $iterable
  * @param callable(K, V): Pair<K2, V2> $mapper
+ * @psalm-param iterable<K, V> $iterable
  *
  * @return Map<K2, V2>
  *
@@ -21,7 +22,6 @@ use Ds\Vector;
  * @template V
  * @template K2
  * @template V2
- * @psalm-param iterable<K, V> $iterable
  */
 function mapFromIterable(iterable $iterable, callable $mapper) : Map
 {
@@ -39,13 +39,13 @@ function mapFromIterable(iterable $iterable, callable $mapper) : Map
 /**
  * @param iterable<mixed, mixed> $iterable
  * @param callable(K,V): V2 $mapper
+ * @psalm-param iterable<K, V> $iterable
  *
  * @return Set<V2>
  *
  * @template K
  * @template V
  * @template V2
- * @psalm-param iterable<K, V> $iterable
  */
 function setFromIterable(iterable $iterable, callable $mapper) : Set
 {
@@ -61,13 +61,13 @@ function setFromIterable(iterable $iterable, callable $mapper) : Set
 
 /**
  * @param callable(K, V): V2 $mapper
+ * @psalm-param iterable<K, V> $iterable
  *
  * @return Vector<V2>
  *
  * @template K
  * @template V
  * @template V2
- * @psalm-param iterable<K, V> $iterable
  */
 function vectorFromIterable(iterable $iterable, callable $mapper) : Vector
 {

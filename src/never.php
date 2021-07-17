@@ -7,8 +7,9 @@ namespace Cdn77\Functions;
 use Exception;
 
 /**
- * @psalm-pure
  * @psalm-return no-return
+ *
+ * @psalm-pure
  */
 function never() : void
 {
