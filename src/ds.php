@@ -10,22 +10,19 @@ use Ds\Set;
 use Ds\Vector;
 
 /**
- * @see      Pair
+ * @param iterable<K, V> $iterable
+ * @param callable(K, V): Pair<KReturn, VReturn> $mapper
  *
- * @param iterable<mixed, mixed> $iterable
- * @param callable(K, V): Pair<K2, V2> $mapper
- * @psalm-param iterable<K, V> $iterable
- *
- * @return Map<K2, V2>
+ * @return Map<KReturn, VReturn>
  *
  * @template K
  * @template V
- * @template K2
- * @template V2
+ * @template KReturn
+ * @template VReturn
  */
 function mapFromIterable(iterable $iterable, callable $mapper) : Map
 {
-    /** @var Map<K2, V2> $map */
+    /** @var Map<KReturn, VReturn> $map */
     $map = new Map();
 
     foreach ($iterable as $key => $value) {
@@ -37,19 +34,18 @@ function mapFromIterable(iterable $iterable, callable $mapper) : Map
 }
 
 /**
- * @param iterable<mixed, mixed> $iterable
- * @param callable(K,V): V2 $mapper
- * @psalm-param iterable<K, V> $iterable
+ * @param iterable<K, V> $iterable
+ * @param callable(K,V): VReturn $mapper
  *
- * @return Set<V2>
+ * @return Set<VReturn>
  *
  * @template K
  * @template V
- * @template V2
+ * @template VReturn
  */
 function setFromIterable(iterable $iterable, callable $mapper) : Set
 {
-    /** @var Set<V2> $set */
+    /** @var Set<VReturn> $set */
     $set = new Set();
 
     foreach ($iterable as $key => $value) {
@@ -60,18 +56,18 @@ function setFromIterable(iterable $iterable, callable $mapper) : Set
 }
 
 /**
- * @param callable(K, V): V2 $mapper
- * @psalm-param iterable<K, V> $iterable
+ * @param iterable<K, V> $iterable
+ * @param callable(K, V): VReturn $mapper
  *
- * @return Vector<V2>
+ * @return Vector<VReturn>
  *
  * @template K
  * @template V
- * @template V2
+ * @template VReturn
  */
 function vectorFromIterable(iterable $iterable, callable $mapper) : Vector
 {
-    /** @var Vector<V2> $vector */
+    /** @var Vector<VReturn> $vector */
     $vector = new Vector();
 
     foreach ($iterable as $key => $value) {
