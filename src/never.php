@@ -7,7 +7,7 @@ namespace Cdn77\Functions;
 use Exception;
 
 /**
- * @psalm-return no-return
+ * @psalm-return never
  *
  * @psalm-pure
  */
