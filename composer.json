@@ -24,7 +24,7 @@
         "ext-pcov": "*",
         "cdn77/coding-standard": "^5.0",
         "ergebnis/composer-normalize": "^2.23",
-        "icanhazstring/composer-unused": "^0.7.6",
+        "icanhazstring/composer-unused": "^0.8.0",
         "infection/infection": "^0.25.5",
         "maglnet/composer-require-checker": "^3.3",
         "php-ds/php-ds": "^1.4",
@@ -55,10 +55,5 @@
             "phpstan/extension-installer": true
         },
         "sort-packages": true
-    },
-    "extra": {
-        "unused": [
-            "ext-ds"
-        ]
     }
 }

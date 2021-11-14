@@ -20,7 +20,7 @@ Missing Composer Requirements:
 
 Unused Composer Requirements:
     extends: .job
-    script: make composer-unused
+    script: vendor/bin/composer-unused
 
 variables:
     PHP_EXTENSIONS: dom ds json mbstring pcov simplexml xml xmlwriter
