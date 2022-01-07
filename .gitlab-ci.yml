@@ -2,6 +2,10 @@ include:
     -   project: ci-cd/templates
         file: 'php/php.yaml'
 
+Composer Normalize:
+    extends: .job
+    script: composer normalize --dry-run
+
 Infection:
     extends: .job
     script: make infection

@@ -1,8 +1,8 @@
 {
     "name": "cdn77/functions",
-    "type": "library",
-    "license": "proprietary",
     "description": "PHP Functions",
+    "license": "proprietary",
+    "type": "library",
     "keywords": [
         "php",
         "functions",
@@ -16,28 +16,9 @@
             "email": "simon@podlipsky.net"
         }
     ],
-    "config": {
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "ergebnis/composer-normalize": true,
-            "icanhazstring/composer-unused": true,
-            "infection/extension-installer": true,
-            "phpstan/extension-installer": true
-        },
-        "sort-packages": true
-    },
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-ds": "*"
-    },
-    "autoload": {
-        "files": ["src/functions_include.php"]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Cdn77\\Functions\\Tests\\": "tests"
-        }
     },
     "require-dev": {
         "ext-pcov": "*",
@@ -53,6 +34,26 @@
         "psalm/plugin-phpunit": "^0.16.1",
         "roave/infection-static-analysis-plugin": "^1.8",
         "vimeo/psalm": "^4.8"
+    },
+    "autoload": {
+        "files": [
+            "src/functions_include.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cdn77\\Functions\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true
+        },
+        "sort-packages": true
     },
     "extra": {
         "unused": [
