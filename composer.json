@@ -17,6 +17,13 @@
         }
     ],
     "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true
+        },
         "sort-packages": true
     },
     "require": {
