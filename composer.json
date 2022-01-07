@@ -25,7 +25,7 @@
         "cdn77/coding-standard": "^5.0",
         "ergebnis/composer-normalize": "^2.23",
         "icanhazstring/composer-unused": "^0.7.6",
-        "infection/infection": "^0.23.0",
+        "infection/infection": "^0.25.5",
         "maglnet/composer-require-checker": "^3.3",
         "php-ds/php-ds": "^1.4",
         "phpstan/extension-installer": "^1.1",
@@ -33,7 +33,7 @@
         "phpstan/phpstan-phpunit": "^1.0.0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16.1",
-        "roave/infection-static-analysis-plugin": "^1.8",
+        "roave/infection-static-analysis-plugin": "^1.13",
         "vimeo/psalm": "^4.8"
     },
     "autoload": {
@@ -52,8 +52,7 @@
             "ergebnis/composer-normalize": true,
             "icanhazstring/composer-unused": true,
             "infection/extension-installer": true,
-            "phpstan/extension-installer": true,
-            "composer/package-versions-deprecated": true
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
