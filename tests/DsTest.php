@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 use function Cdn77\Functions\mapFromIterable;
 use function Cdn77\Functions\mappedValueSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
+use function Cdn77\Functions\vectorFromIterable;
 
 final class DsTest extends TestCase
 {
@@ -63,5 +64,20 @@ final class DsTest extends TestCase
 
         self::assertCount(2, $set);
         self::assertTrue($set->contains(true, false));
+    }
+
+    public function testVectorFromIterable() : void
+    {
+        /** @var callable():Generator<int, bool> $iterableFactory */
+        $iterableFactory = static function () : Generator {
+            yield 1 => true;
+            yield 2 => false;
+            yield 2 => true;
+        };
+
+        $vector = vectorFromIterable($iterableFactory(), static fn (int $_, bool $value) => ! $value);
+
+        self::assertCount(3, $vector);
+        self::assertSame([false, true, false], $vector->toArray());
     }
 }
