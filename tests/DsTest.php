@@ -9,6 +9,7 @@ use Generator;
 use PHPUnit\Framework\TestCase;
 
 use function Cdn77\Functions\mapFromIterable;
+use function Cdn77\Functions\mappedValueSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
 
 final class DsTest extends TestCase
@@ -27,6 +28,26 @@ final class DsTest extends TestCase
         self::assertCount(2, $map);
         self::assertNull($map->get(1, null));
         self::assertFalse($map->get(4));
+    }
+
+    public function testMappedValueSetsFromIterable() : void
+    {
+        /** @var callable():Generator<int, string> $iterableFactory */
+        $iterableFactory = static function () : Generator {
+            yield 1 => 'a';
+            yield 1 => 'b';
+            yield 2 => 'a';
+            yield 2 => 'b';
+        };
+
+        $map = mappedValueSetsFromIterable(
+            $iterableFactory(),
+            static fn (int $key, string $value) => new Pair($key * 2, $value . '_')
+        );
+
+        self::assertCount(2, $map);
+        self::assertTrue($map->get(2)->contains('a_', 'b_'));
+        self::assertTrue($map->get(4)->contains('a_', 'b_'));
     }
 
     public function testSetFromIterable() : void
