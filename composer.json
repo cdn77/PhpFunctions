@@ -8,7 +8,8 @@
         "functions",
         "ds",
         "generators",
-        "never"
+        "never",
+        "noop"
     ],
     "authors": [
         {
