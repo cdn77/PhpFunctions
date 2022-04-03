@@ -10,9 +10,9 @@
         "@default": true
     },
     "logs": {
-        "badge": {
-            "branch": "master"
-        },
+        "html": "infection.html",
         "text": "infection-log.txt"
-    }
+    },
+    "minMsi": 0,
+    "minCoveredMsi": 0
 }
