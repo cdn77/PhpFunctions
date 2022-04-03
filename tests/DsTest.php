@@ -15,10 +15,10 @@ use function Cdn77\Functions\vectorFromIterable;
 
 final class DsTest extends TestCase
 {
-    public function testMapFromIterable() : void
+    public function testMapFromIterable(): void
     {
         /** @var callable():Generator<int, bool> $iterableFactory */
-        $iterableFactory = static function () : Generator {
+        $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;
             yield 2 => true;
@@ -31,10 +31,10 @@ final class DsTest extends TestCase
         self::assertFalse($map->get(4));
     }
 
-    public function testMappedValueSetsFromIterable() : void
+    public function testMappedValueSetsFromIterable(): void
     {
         /** @var callable():Generator<int, string> $iterableFactory */
-        $iterableFactory = static function () : Generator {
+        $iterableFactory = static function (): Generator {
             yield 1 => 'a';
             yield 1 => 'b';
             yield 2 => 'a';
@@ -51,10 +51,10 @@ final class DsTest extends TestCase
         self::assertTrue($map->get(4)->contains('a_', 'b_'));
     }
 
-    public function testSetFromIterable() : void
+    public function testSetFromIterable(): void
     {
         /** @var callable():Generator<int, bool> $iterableFactory */
-        $iterableFactory = static function () : Generator {
+        $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;
             yield 2 => true;
@@ -66,10 +66,10 @@ final class DsTest extends TestCase
         self::assertTrue($set->contains(true, false));
     }
 
-    public function testVectorFromIterable() : void
+    public function testVectorFromIterable(): void
     {
         /** @var callable():Generator<int, bool> $iterableFactory */
-        $iterableFactory = static function () : Generator {
+        $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;
             yield 2 => true;

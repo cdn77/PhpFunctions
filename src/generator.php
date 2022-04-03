@@ -7,7 +7,7 @@ namespace Cdn77\Functions;
 use Generator;
 
 /** @return Generator<mixed> */
-function emptyGenerator() : Generator
+function emptyGenerator(): Generator
 {
     yield from [];
 }
@@ -20,7 +20,7 @@ function emptyGenerator() : Generator
  * @template K
  * @template V
  */
-function iterableToGenerator(iterable $iterable) : Generator
+function iterableToGenerator(iterable $iterable): Generator
 {
     yield from $iterable;
 }

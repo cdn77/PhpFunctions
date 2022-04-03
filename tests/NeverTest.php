@@ -11,7 +11,7 @@ use function Cdn77\Functions\never;
 
 final class NeverTest extends TestCase
 {
-    public function testReturnsNever() : void
+    public function testReturnsNever(): void
     {
         $this->expectException(Throwable::class);
 

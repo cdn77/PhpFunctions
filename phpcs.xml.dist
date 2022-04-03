@@ -5,10 +5,7 @@
 >
     <arg name="cache" value=".phpcs-cache" />
 
-    <rule ref="Cdn77">
-        <exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
-    </rule>
-
+    <rule ref="Cdn77" />
 
     <file>src/</file>
     <file>tests/</file>

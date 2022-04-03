@@ -10,7 +10,7 @@ use function Cdn77\Functions\noop;
 
 final class NoopTest extends TestCase
 {
-    public function testRun() : void
+    public function testRun(): void
     {
         noop();
 

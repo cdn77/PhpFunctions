@@ -11,7 +11,7 @@ use Exception;
  *
  * @psalm-pure
  */
-function never() : void
+function never(): void
 {
     throw new Exception('This should never have happened');
 }

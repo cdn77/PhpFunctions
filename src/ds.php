@@ -20,7 +20,7 @@ use Ds\Vector;
  * @template KReturn
  * @template VReturn
  */
-function mapFromIterable(iterable $iterable, callable $mapper) : Map
+function mapFromIterable(iterable $iterable, callable $mapper): Map
 {
     /** @var Map<KReturn, VReturn> $map */
     $map = new Map();
@@ -44,7 +44,7 @@ function mapFromIterable(iterable $iterable, callable $mapper) : Map
  * @template KReturn
  * @template VReturn
  */
-function mappedValueSetsFromIterable(iterable $iterable, callable $mapper) : Map
+function mappedValueSetsFromIterable(iterable $iterable, callable $mapper): Map
 {
     /** @var Map<KReturn, Set<VReturn>> $map */
     $map = new Map();
@@ -74,7 +74,7 @@ function mappedValueSetsFromIterable(iterable $iterable, callable $mapper) : Map
  * @template V
  * @template VReturn
  */
-function setFromIterable(iterable $iterable, callable $mapper) : Set
+function setFromIterable(iterable $iterable, callable $mapper): Set
 {
     /** @var Set<VReturn> $set */
     $set = new Set();
@@ -96,7 +96,7 @@ function setFromIterable(iterable $iterable, callable $mapper) : Set
  * @template V
  * @template VReturn
  */
-function vectorFromIterable(iterable $iterable, callable $mapper) : Vector
+function vectorFromIterable(iterable $iterable, callable $mapper): Vector
 {
     /** @var Vector<VReturn> $vector */
     $vector = new Vector();
