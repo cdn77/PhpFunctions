@@ -1,0 +1,8 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>simPod/renovate-presets:php-lib",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "assignees": ["simPod"]
+}
