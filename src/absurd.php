@@ -7,13 +7,11 @@ namespace Cdn77\Functions;
 use Exception;
 
 /**
- * @deprecated {@see absurd()}
- *
  * @psalm-return never
  *
  * @psalm-pure
  */
-function never(): void
+function absurd(): void
 {
-    throw new Exception('This should never have happened');
+    throw new Exception('Called `absurd` function which should be uncallable');
 }

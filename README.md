@@ -3,9 +3,15 @@
 ## Contents
 
 - [Functions](#functions)
+  - [absurd()](#absurd)
   - [noop()](#noop)
 
 ## Functions
+
+### absurd()
+
+Function that should have never been called. 
+Useful for `default` case in exhaustive matching.
 
 ### noop()
 
