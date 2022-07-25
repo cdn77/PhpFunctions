@@ -2,10 +2,12 @@
 * text eol=lf
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.github export-ignore
 /infection.json.dist export-ignore
 /Makefile export-ignore
 /phpcs.xml.dist export-ignore
 /phpstan.neon.dist export-ignore
 /phpunit.xml.dist export-ignore
 /psalm.xml.dist export-ignore
+/renovate.json export-ignore
 /tests export-ignore

@@ -1,0 +1,57 @@
+name: "Static Analysis"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "*.*.x"
+  workflow_dispatch:
+
+jobs:
+  static-analysis-phpstan:
+    name: "Static Analysis with PHPStan"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.1"
+          coverage: "none"
+          extensions: "json, mbstring"
+          tools: "cs2pr"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+
+      - name: "Run a static analysis with phpstan/phpstan"
+        run: "vendor/bin/phpstan --error-format=checkstyle | cs2pr"
+
+  static-analysis-psalm:
+    name: "Static Analysis with Psalm"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          coverage: "none"
+          php-version: "8.1"
+          tools: "cs2pr"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+
+      - name: "Run a static analysis with vimeo/psalm"
+        run: "vendor/bin/psalm --output-format=github --shepherd --taint-analysis --report=results.sarif"
+
+      - name: "Upload Security Analysis results to GitHub"
+        uses: "github/codeql-action/upload-sarif@v1"
+        with:
+          sarif_file: results.sarif
