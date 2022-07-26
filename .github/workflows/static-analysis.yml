@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: "8.1"
           coverage: "none"
-          extensions: "json, mbstring"
+          extensions: "ds, mbstring"
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
@@ -55,3 +55,25 @@ jobs:
         uses: "github/codeql-action/upload-sarif@v1"
         with:
           sarif_file: results.sarif
+
+  static-analysis-composer-unused:
+    name: "Static Analysis with Composer Unused"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.1"
+          coverage: "none"
+          extensions: "ds, mbstring"
+          tools: "cs2pr"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+
+      - name: "Run Composer Unused"
+        run: "vendor/bin/composer-unused"

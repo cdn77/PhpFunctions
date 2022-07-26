@@ -33,7 +33,7 @@ jobs:
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: "pcov"
-          extensions: "json, mbstring"
+          extensions: "ds, mbstring"
           ini-values: "zend.assertions=1"
 
       - name: "Install dependencies with Composer"
