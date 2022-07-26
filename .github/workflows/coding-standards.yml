@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: "8.1"
           coverage: "none"
-          extensions: "json, mbstring"
+          extensions: "ds, mbstring"
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
@@ -29,3 +29,25 @@ jobs:
 
       - name: "Run PHP_CodeSniffer"
         run: "vendor/bin/phpcs -q --no-colors --report=checkstyle | cs2pr"
+
+  composer-normalize:
+    name: "Composer Normalize"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.1"
+          coverage: "none"
+          extensions: "ds, mbstring"
+          tools: "cs2pr"
+
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v1"
+
+      - name: "Run PHP_CodeSniffer"
+        run: "composer normalize --dry-run"
