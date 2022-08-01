@@ -1,7 +1,7 @@
 {
     "name": "cdn77/functions",
     "description": "PHP Functions",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "library",
     "keywords": [
         "php",
