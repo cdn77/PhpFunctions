@@ -20,7 +20,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "ext-ds": "*"
+        "ext-ds": "*",
+        "phpoption/phpoption": "^1.9"
     },
     "require-dev": {
         "cdn77/coding-standard": "^6.0",
