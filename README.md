@@ -18,3 +18,18 @@ match ($val) {
   default => noop(),
 };
 ```
+
+## Iterable
+
+### find()
+
+Finds a value in an iterable.
+
+```php
+use function Cdn77\Functions\Iterable\find;
+
+$iterable = [0, 1, 2, 3];
+$option = find($iterable, static fn (mixed $_, int $value) => $value < 2);
+
+assert($option->get() === 0);
+```
