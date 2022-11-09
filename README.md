@@ -1,11 +1,5 @@
 # PHP Functions
 
-## Contents
-
-- [Functions](#functions)
-  - [absurd()](#absurd)
-  - [noop()](#noop)
-
 ## Functions
 
 ### absurd()
