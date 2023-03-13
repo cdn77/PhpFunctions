@@ -13,11 +13,21 @@ final class GeneratorTest extends TestCase
 {
     public function testEmptyGenerator(): void
     {
-        self::assertCount(0, emptyGenerator());
+        $buffer = [];
+        foreach (emptyGenerator() as $item) {
+            $buffer[] = $item;
+        }
+
+        self::assertSame([], $buffer);
     }
 
     public function testIterableToGenerator(): void
     {
-        self::assertCount(2, iterableToGenerator([1, 2]));
+        $buffer = [];
+        foreach (iterableToGenerator([1, 2]) as $item) {
+            $buffer[] = $item;
+        }
+
+        self::assertSame([1, 2], $buffer);
     }
 }
