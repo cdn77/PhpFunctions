@@ -6,6 +6,7 @@ namespace Cdn77\Functions\Tests;
 
 use Ds\Pair;
 use Generator;
+use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
 use function Cdn77\Functions\mapFromIterable;
@@ -13,6 +14,10 @@ use function Cdn77\Functions\mappedValueSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
 use function Cdn77\Functions\vectorFromIterable;
 
+#[CoversFunction('Cdn77\Functions\mapFromIterable')]
+#[CoversFunction('Cdn77\Functions\mappedValueSetsFromIterable')]
+#[CoversFunction('Cdn77\Functions\setFromIterable')]
+#[CoversFunction('Cdn77\Functions\vectorFromIterable')]
 final class DsTest extends TestCase
 {
     public function testMapFromIterable(): void
