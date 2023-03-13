@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Cdn77\Functions\Tests;
 
 use PhpOption\None;
+use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
 use function Cdn77\Functions\Iterable\find;
 
+#[CoversFunction('Cdn77\Functions\Iterable\find')]
 final class IterableTest extends TestCase
 {
     public function testFindFirst(): void
