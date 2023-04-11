@@ -25,6 +25,23 @@ match ($val) {
 };
 ```
 
+## Ds
+
+### `mapFromEntries()`
+
+Creates a map from an iterable of entries.
+
+```php
+use function Cdn77\Functions\mapFromEntries;
+
+$map = mapFromEntries([
+  ['foo', 'bar'],
+  ['baz', 'qux'],
+]);
+
+assert($map->get('foo') === 'bar');
+```
+
 ## Iterable
 
 ### find()
