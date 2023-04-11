@@ -10,6 +10,30 @@ use Ds\Set;
 use Ds\Vector;
 
 /**
+ * @param iterable<array{K, V}> $entries
+ * @param callable(K, V): Pair<KReturn, VReturn> $mapper
+ *
+ * @return Map<KReturn, VReturn>
+ *
+ * @template K
+ * @template V
+ * @template KReturn
+ * @template VReturn
+ */
+function mapFromEntries(iterable $entries, callable $mapper): Map
+{
+    /** @var Map<KReturn, VReturn> $map */
+    $map = new Map();
+
+    foreach ($entries as [$key, $value]) {
+        $keyValue = $mapper($key, $value);
+        $map->put($keyValue->key, $keyValue->value);
+    }
+
+    return $map;
+}
+
+/**
  * @param iterable<K, V> $iterable
  * @param callable(K, V): Pair<KReturn, VReturn> $mapper
  *

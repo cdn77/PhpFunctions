@@ -9,6 +9,7 @@ use Generator;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
+use function Cdn77\Functions\mapFromEntries;
 use function Cdn77\Functions\mapFromIterable;
 use function Cdn77\Functions\mappedValueSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
@@ -20,6 +21,22 @@ use function Cdn77\Functions\vectorFromIterable;
 #[CoversFunction('Cdn77\Functions\vectorFromIterable')]
 final class DsTest extends TestCase
 {
+    public function testMapFromEntries(): void
+    {
+        /** @var callable():Generator<array{int, bool}> $iterableFactory */
+        $iterableFactory = static function (): Generator {
+            yield [1, true];
+            yield [2, false];
+            yield [2, true];
+        };
+
+        $map = mapFromEntries($iterableFactory(), static fn (int $key, bool $value) => new Pair($key * 2, ! $value));
+
+        self::assertCount(2, $map);
+        self::assertNull($map->get(1, null));
+        self::assertFalse($map->get(4));
+    }
+
     public function testMapFromIterable(): void
     {
         /** @var callable():Generator<int, bool> $iterableFactory */
