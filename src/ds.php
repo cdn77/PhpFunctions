@@ -11,23 +11,19 @@ use Ds\Vector;
 
 /**
  * @param iterable<array{K, V}> $entries
- * @param callable(K, V): Pair<KReturn, VReturn> $mapper
  *
- * @return Map<KReturn, VReturn>
+ * @return Map<K, V>
  *
  * @template K
  * @template V
- * @template KReturn
- * @template VReturn
  */
-function mapFromEntries(iterable $entries, callable $mapper): Map
+function mapFromEntries(iterable $entries): Map
 {
-    /** @var Map<KReturn, VReturn> $map */
+    /** @var Map<K, V> $map */
     $map = new Map();
 
     foreach ($entries as [$key, $value]) {
-        $keyValue = $mapper($key, $value);
-        $map->put($keyValue->key, $keyValue->value);
+        $map->put($key, $value);
     }
 
     return $map;
