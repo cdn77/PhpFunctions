@@ -26,15 +26,15 @@ final class DsTest extends TestCase
         /** @var callable():Generator<array{int, bool}> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield [1, true];
-            yield [2, false];
             yield [2, true];
+            yield [2, false];
         };
 
-        $map = mapFromEntries($iterableFactory(), static fn (int $key, bool $value) => new Pair($key * 2, ! $value));
+        $map = mapFromEntries($iterableFactory());
 
         self::assertCount(2, $map);
-        self::assertNull($map->get(1, null));
-        self::assertFalse($map->get(4));
+        self::assertTrue($map->get(1));
+        self::assertFalse($map->get(2));
     }
 
     public function testMapFromIterable(): void
