@@ -53,6 +53,22 @@ final class DsTest extends TestCase
         self::assertFalse($map->get(4));
     }
 
+    public function testMapFromIterableNoopMapper(): void
+    {
+        /** @var callable():Generator<int, bool> $iterableFactory */
+        $iterableFactory = static function (): Generator {
+            yield 1 => true;
+            yield 2 => false;
+            yield 2 => true;
+        };
+
+        $map = mapFromIterable($iterableFactory());
+
+        self::assertCount(2, $map);
+        self::assertTrue($map->get(1));
+        self::assertTrue($map->get(2));
+    }
+
     public function testMappedValueSetsFromIterable(): void
     {
         /** @var callable():Generator<int, string> $iterableFactory */
