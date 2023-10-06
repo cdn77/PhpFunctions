@@ -31,7 +31,7 @@ function mapFromEntries(iterable $entries): Map
 
 /**
  * @param iterable<K, V> $iterable
- * @param callable(K, V): Pair<KReturn, VReturn> $mapper
+ * @param callable(K, V): Pair<KReturn, VReturn>|null $mapper   If not provided then the output for `iterable<K, V>` is `Map<K, V>`
  *
  * @return Map<KReturn, VReturn>
  *
@@ -40,10 +40,12 @@ function mapFromEntries(iterable $entries): Map
  * @template KReturn
  * @template VReturn
  */
-function mapFromIterable(iterable $iterable, callable $mapper): Map
+function mapFromIterable(iterable $iterable, callable|null $mapper = null): Map
 {
     /** @var Map<KReturn, VReturn> $map */
     $map = new Map();
+
+    $mapper ??= static fn ($key, $value) => new Pair($key, $value);
 
     foreach ($iterable as $key => $value) {
         $keyValue = $mapper($key, $value);
