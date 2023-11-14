@@ -11,11 +11,13 @@ use PHPUnit\Framework\TestCase;
 
 use function Cdn77\Functions\mapFromEntries;
 use function Cdn77\Functions\mapFromIterable;
+use function Cdn77\Functions\mappedQueuesFromIterable;
 use function Cdn77\Functions\mappedSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
 use function Cdn77\Functions\vectorFromIterable;
 
 #[CoversFunction('Cdn77\Functions\mapFromIterable')]
+#[CoversFunction('Cdn77\Functions\mappedQueuesFromIterable')]
 #[CoversFunction('Cdn77\Functions\mappedSetsFromIterable')]
 #[CoversFunction('Cdn77\Functions\setFromIterable')]
 #[CoversFunction('Cdn77\Functions\vectorFromIterable')]
@@ -51,6 +53,32 @@ final class DsTest extends TestCase
         self::assertCount(2, $map);
         self::assertNull($map->get(1, null));
         self::assertFalse($map->get(4));
+    }
+
+    public function testMappedQueuesFromIterable(): void
+    {
+        /** @var callable():Generator<int, string> $iterableFactory */
+        $iterableFactory = static function (): Generator {
+            yield 1 => 'a';
+            yield 1 => 'b';
+            yield 2 => 'c';
+            yield 2 => 'd';
+        };
+
+        $map = mappedQueuesFromIterable(
+            $iterableFactory(),
+            static fn (int $key, string $value) => new Pair($key * 2, $value . '_')
+        );
+
+        self::assertCount(2, $map);
+
+        $queueAt2 = $map->get(2);
+        self::assertSame('a_', $queueAt2->pop());
+        self::assertSame('b_', $queueAt2->pop());
+
+        $queueAt4 = $map->get(4);
+        self::assertSame('c_', $queueAt4->pop());
+        self::assertSame('d_', $queueAt4->pop());
     }
 
     public function testMappedSetsFromIterable(): void

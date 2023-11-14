@@ -6,6 +6,7 @@ namespace Cdn77\Functions;
 
 use Ds\Map;
 use Ds\Pair;
+use Ds\Queue;
 use Ds\Set;
 use Ds\Vector;
 
@@ -48,6 +49,37 @@ function mapFromIterable(iterable $iterable, callable $mapper): Map
     foreach ($iterable as $key => $value) {
         $keyValue = $mapper($key, $value);
         $map->put($keyValue->key, $keyValue->value);
+    }
+
+    return $map;
+}
+
+/**
+ * @param iterable<K, V> $iterable
+ * @param callable(K, V): Pair<KReturn, VReturn> $mapper
+ *
+ * @return Map<KReturn, Queue<VReturn>>
+ *
+ * @template K
+ * @template V
+ * @template KReturn
+ * @template VReturn
+ */
+function mappedQueuesFromIterable(iterable $iterable, callable $mapper): Map
+{
+    /** @var Map<KReturn, Queue<VReturn>> $map */
+    $map = new Map();
+
+    foreach ($iterable as $key => $value) {
+        $keyValue = $mapper($key, $value);
+        $queue = $map->get($keyValue->key, null);
+        if ($queue === null) {
+            /** @var Queue<VReturn> $queue */
+            $queue = new Queue();
+            $map->put($keyValue->key, $queue);
+        }
+
+        $queue->push($keyValue->value);
     }
 
     return $map;
