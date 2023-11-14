@@ -11,12 +11,12 @@ use PHPUnit\Framework\TestCase;
 
 use function Cdn77\Functions\mapFromEntries;
 use function Cdn77\Functions\mapFromIterable;
-use function Cdn77\Functions\mappedValueSetsFromIterable;
+use function Cdn77\Functions\mappedSetsFromIterable;
 use function Cdn77\Functions\setFromIterable;
 use function Cdn77\Functions\vectorFromIterable;
 
 #[CoversFunction('Cdn77\Functions\mapFromIterable')]
-#[CoversFunction('Cdn77\Functions\mappedValueSetsFromIterable')]
+#[CoversFunction('Cdn77\Functions\mappedSetsFromIterable')]
 #[CoversFunction('Cdn77\Functions\setFromIterable')]
 #[CoversFunction('Cdn77\Functions\vectorFromIterable')]
 final class DsTest extends TestCase
@@ -53,7 +53,7 @@ final class DsTest extends TestCase
         self::assertFalse($map->get(4));
     }
 
-    public function testMappedValueSetsFromIterable(): void
+    public function testMappedSetsFromIterable(): void
     {
         /** @var callable():Generator<int, string> $iterableFactory */
         $iterableFactory = static function (): Generator {
@@ -63,7 +63,7 @@ final class DsTest extends TestCase
             yield 2 => 'b';
         };
 
-        $map = mappedValueSetsFromIterable(
+        $map = mappedSetsFromIterable(
             $iterableFactory(),
             static fn (int $key, string $value) => new Pair($key * 2, $value . '_')
         );
