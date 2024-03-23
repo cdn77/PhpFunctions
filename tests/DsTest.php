@@ -67,7 +67,7 @@ final class DsTest extends TestCase
 
         $map = mappedQueuesFromIterable(
             $iterableFactory(),
-            static fn (int $key, string $value) => new Pair($key * 2, $value . '_')
+            static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
         self::assertCount(2, $map);
@@ -93,7 +93,7 @@ final class DsTest extends TestCase
 
         $map = mappedSetsFromIterable(
             $iterableFactory(),
-            static fn (int $key, string $value) => new Pair($key * 2, $value . '_')
+            static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
         self::assertCount(2, $map);
