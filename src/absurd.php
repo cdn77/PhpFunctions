@@ -7,9 +7,9 @@ namespace Cdn77\Functions;
 use Exception;
 
 /**
- * @psalm-return never
+ * @phpstan-return never
  *
- * @psalm-pure
+ * @phpstan-pure
  */
 function absurd(): void
 {
