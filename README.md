@@ -1,7 +1,6 @@
 # PHP Functions
 
 [![GitHub Actions][GA Image]][GA Link]
-[![Shepherd Type][Shepherd Image]][Shepherd Link]
 [![Code Coverage][Coverage Image]][CodeCov Link]
 [![Downloads][Downloads Image]][Packagist Link]
 [![Packagist][Packagist Image]][Packagist Link]
@@ -60,10 +59,6 @@ assert($option->get() === 0);
 [GA Image]: https://github.com/cdn77/PhpFunctions/workflows/CI/badge.svg
 
 [GA Link]: https://github.com/cdn77/PhpFunctions/actions?query=workflow%3A%22CI%22+branch%3Amaster
-
-[Shepherd Image]: https://shepherd.dev/github/cdn77/PhpFunctions/coverage.svg
-
-[Shepherd Link]: https://shepherd.dev/github/cdn77/PhpFunctions
 
 [Coverage Image]: https://codecov.io/gh/cdn77/PhpFunctions/branch/0.2.x/graph/badge.svg
 
