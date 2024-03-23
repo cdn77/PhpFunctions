@@ -6,12 +6,8 @@ namespace Cdn77\Functions;
 
 use Exception;
 
-/**
- * @phpstan-return never
- *
- * @phpstan-pure
- */
-function absurd(): void
+/** @phpstan-pure */
+function absurd(): never
 {
     throw new Exception('Called `absurd` function which should be uncallable');
 }
