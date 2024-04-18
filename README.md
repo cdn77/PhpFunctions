@@ -53,7 +53,7 @@ use function Cdn77\Functions\Iterable\find;
 $iterable = [0, 1, 2, 3];
 $option = find($iterable, static fn (mixed $_, int $value) => $value < 2);
 
-assert($option->get() === 0);
+assert($option->unwrap() === 0);
 ```
 
 [GA Image]: https://github.com/cdn77/PhpFunctions/workflows/CI/badge.svg

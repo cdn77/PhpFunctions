@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Cdn77\Functions\Iterable;
 
-use PhpOption\None;
-use PhpOption\Option;
-use PhpOption\Some;
+use Psl\Option\Option;
 
 /**
  * @param iterable<K, T> $iterable
@@ -21,9 +19,9 @@ function find(iterable $iterable, callable $filterFn): Option
 {
     foreach ($iterable as $k => $v) {
         if ($filterFn($k, $v)) {
-            return new Some($v);
+            return Option::some($v);
         }
     }
 
-    return None::create();
+    return Option::none();
 }
