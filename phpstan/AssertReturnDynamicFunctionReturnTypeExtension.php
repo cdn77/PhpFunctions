@@ -9,6 +9,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Analyser\TypeSpecifier;
 use PHPStan\Analyser\TypeSpecifierAwareExtension;
 use PHPStan\Analyser\TypeSpecifierContext;
+use PHPStan\Node\Printer\ExprPrinter;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Type\DynamicFunctionReturnTypeExtension;
 use PHPStan\Type\Type;
@@ -20,6 +21,10 @@ final class AssertReturnDynamicFunctionReturnTypeExtension implements
     TypeSpecifierAwareExtension
 {
     private TypeSpecifier $typeSpecifier;
+
+    public function __construct(private ExprPrinter $exprPrinter)
+    {
+    }
 
     public function isFunctionSupported(FunctionReflection $functionReflection): bool
     {
@@ -42,7 +47,9 @@ final class AssertReturnDynamicFunctionReturnTypeExtension implements
             TypeSpecifierContext::createTruthy(),
         );
 
-        return $specifiedTypes->getSureTypes()['$value'][1] ?? null;
+        $originalExprString = $this->exprPrinter->printExpr($functionCall->getArgs()[0]->value);
+
+        return $specifiedTypes->getSureTypes()[$originalExprString][1] ?? null;
     }
 
     public function setTypeSpecifier(TypeSpecifier $typeSpecifier): void
