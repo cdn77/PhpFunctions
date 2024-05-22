@@ -1,5 +1,9 @@
+includes:
+    - phpstan-extension.neon
+
 parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src
+        - %currentWorkingDirectory%/phpstan
         - %currentWorkingDirectory%/tests

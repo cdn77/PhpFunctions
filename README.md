@@ -12,6 +12,23 @@
 Function that should have never been called. 
 Useful for `default` case in exhaustive matching.
 
+### assert_return()
+
+Asserts the value via the expression and returns it.
+
+It's useful when you want to assert inline so for example you can keep the arrow function in place.
+
+It uses native `assert()` internally.
+
+```php
+use function Cdn77\Functions\assert_return;
+
+array_map(
+    fn (mixed $value) => new RequiresInt(assert_return($value, is_int(...))),
+    [1, 2, 3]
+);
+```
+
 ### noop()
 
 Does nothing. Useful e.g. for `match` expression that currently supports single-line expressions in blocks.

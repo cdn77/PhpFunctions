@@ -1,0 +1,5 @@
+services:
+  -
+    class: Cdn77\Functions\PHPStan\AssertReturnFunctionTypeSpecifyingExtension
+    tags:
+      - phpstan.typeSpecifier.functionTypeSpecifyingExtension
