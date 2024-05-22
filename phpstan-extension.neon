@@ -3,3 +3,8 @@ services:
     class: Cdn77\Functions\PHPStan\AssertReturnFunctionTypeSpecifyingExtension
     tags:
       - phpstan.typeSpecifier.functionTypeSpecifyingExtension
+
+  -
+    class: Cdn77\Functions\PHPStan\AssertReturnDynamicFunctionReturnTypeExtension
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension

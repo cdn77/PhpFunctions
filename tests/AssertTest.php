@@ -25,8 +25,9 @@ final class AssertTest extends TestCase
 
     public function phpstanType(mixed $value): void
     {
-        $_ = assert_return($value, is_int(...));
+        $return = assert_return($value, is_int(...));
 
         assertType('int', $value);
+        assertType('int', $return);
     }
 }
