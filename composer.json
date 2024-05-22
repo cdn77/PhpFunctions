@@ -35,6 +35,9 @@
         "shipmonk/composer-dependency-analyser": "^1.5"
     },
     "autoload": {
+        "psr-4": {
+            "Cdn77\\Functions\\PHPStan\\": "phpstan"
+        },
         "files": [
             "src/functions_include.php"
         ]
@@ -53,5 +56,12 @@
             "phpstan/extension-installer": true
         },
         "sort-packages": true
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "phpstan-extension.neon"
+            ]
+        }
     }
 }
