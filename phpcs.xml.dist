@@ -8,6 +8,7 @@
     <rule ref="Cdn77" />
 
     <file>composer-dependency-analyser.php</file>
+    <file>phpstan/</file>
     <file>src/</file>
     <file>tests/</file>
 </ruleset>

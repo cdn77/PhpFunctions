@@ -6,41 +6,43 @@ namespace Cdn77\Functions\PHPStan;
 
 use PhpParser\Node\Expr\FuncCall;
 use PHPStan\Analyser\Scope;
-use PHPStan\Analyser\SpecifiedTypes;
 use PHPStan\Analyser\TypeSpecifier;
 use PHPStan\Analyser\TypeSpecifierAwareExtension;
 use PHPStan\Analyser\TypeSpecifierContext;
 use PHPStan\Reflection\FunctionReflection;
-use PHPStan\Type\FunctionTypeSpecifyingExtension;
+use PHPStan\Type\DynamicFunctionReturnTypeExtension;
+use PHPStan\Type\Type;
 
 use function assert;
 
-final class AssertReturnFunctionTypeSpecifyingExtension implements
-    FunctionTypeSpecifyingExtension,
+final class AssertReturnDynamicFunctionReturnTypeExtension implements
+    DynamicFunctionReturnTypeExtension,
     TypeSpecifierAwareExtension
 {
     private TypeSpecifier $typeSpecifier;
 
-    public function isFunctionSupported(
-        FunctionReflection $functionReflection,
-        FuncCall $node,
-        TypeSpecifierContext $context,
-    ): bool {
+    public function isFunctionSupported(FunctionReflection $functionReflection): bool
+    {
         return $functionReflection->getName() === 'Cdn77\Functions\assert_return';
     }
 
-    public function specifyTypes(
+    public function getTypeFromFunctionCall(
         FunctionReflection $functionReflection,
-        FuncCall $node,
+        FuncCall $functionCall,
         Scope $scope,
-        TypeSpecifierContext $context,
-    ): SpecifiedTypes {
-        $arg1 = $node->getArgs()[1]->value;
+    ): Type|null {
+        $arg1 = $functionCall->getArgs()[1]->value;
         assert($arg1 instanceof FuncCall, 'Second argument of assert_return must be a function call');
 
-        $call = new FuncCall($arg1->name, [$node->getArgs()[0]], $arg1->getAttributes());
+        $call = new FuncCall($arg1->name, [$functionCall->getArgs()[0]], $arg1->getAttributes());
 
-        return $this->typeSpecifier->specifyTypesInCondition($scope, $call, TypeSpecifierContext::createTruthy());
+        $specifiedTypes = $this->typeSpecifier->specifyTypesInCondition(
+            $scope,
+            $call,
+            TypeSpecifierContext::createTruthy(),
+        );
+
+        return $specifiedTypes->getSureTypes()['$value'][1] ?? null;
     }
 
     public function setTypeSpecifier(TypeSpecifier $typeSpecifier): void
