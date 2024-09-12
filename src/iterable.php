@@ -7,6 +7,8 @@ namespace Cdn77\Functions\Iterable;
 use Psl\Option\Option;
 
 /**
+ * @deprecated Use {@see \Psl\Iter\search_opt} instead
+ *
  * @param iterable<K, T> $iterable
  * @param callable(K, T): bool $filterFn
  *
