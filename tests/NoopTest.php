@@ -16,6 +16,6 @@ final class NoopTest extends TestCase
     {
         noop();
 
-        self::assertTrue(true);
+        self::addToAssertionCount(1);
     }
 }

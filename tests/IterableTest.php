@@ -23,6 +23,7 @@ final class IterableTest extends TestCase
     public function testDontFind(): void
     {
         $iterable = [0, 1, 2, 3];
+        /** @phpstan-ignore greater.alwaysFalse */
         $option = find($iterable, static fn (mixed $_, int $value) => $value > 3);
 
         self::assertTrue($option->isNone());
