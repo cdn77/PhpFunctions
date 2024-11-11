@@ -19,6 +19,7 @@ final class AssertTest extends TestCase
         $value = 1;
         self::assertSame(
             $value,
+            /** @phpstan-ignore function.alreadyNarrowedType */
             assert_return($value, is_int(...)),
         );
     }

@@ -8,7 +8,12 @@ use Throwable;
 
 use function assert;
 
-/** @phpstan-pure */
+/**
+ * @param TValue $assertionFn
+ * @param callable(TValue):(bool|string) $assertionFn
+ *
+ * @template TValue
+ */
 function assert_return(mixed $value, callable $assertionFn, Throwable|string|null $description = null): mixed
 {
     assert($assertionFn($value), $description);

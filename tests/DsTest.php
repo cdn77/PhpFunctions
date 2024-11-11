@@ -25,7 +25,6 @@ final class DsTest extends TestCase
 {
     public function testMapFromEntries(): void
     {
-        /** @var callable():Generator<array{int, bool}> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield [1, true];
             yield [2, true];
@@ -41,7 +40,6 @@ final class DsTest extends TestCase
 
     public function testMapFromIterable(): void
     {
-        /** @var callable():Generator<int, bool> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;
@@ -57,7 +55,6 @@ final class DsTest extends TestCase
 
     public function testMappedQueuesFromIterable(): void
     {
-        /** @var callable():Generator<int, string> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield 1 => 'a';
             yield 1 => 'b';
@@ -67,6 +64,7 @@ final class DsTest extends TestCase
 
         $map = mappedQueuesFromIterable(
             $iterableFactory(),
+            /** @phpstan-ignore argument.type */
             static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
@@ -83,7 +81,6 @@ final class DsTest extends TestCase
 
     public function testMappedSetsFromIterable(): void
     {
-        /** @var callable():Generator<int, string> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield 1 => 'a';
             yield 1 => 'b';
@@ -93,6 +90,7 @@ final class DsTest extends TestCase
 
         $map = mappedSetsFromIterable(
             $iterableFactory(),
+            /** @phpstan-ignore argument.type */
             static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
@@ -103,7 +101,6 @@ final class DsTest extends TestCase
 
     public function testSetFromIterable(): void
     {
-        /** @var callable():Generator<int, bool> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;
@@ -118,7 +115,6 @@ final class DsTest extends TestCase
 
     public function testVectorFromIterable(): void
     {
-        /** @var callable():Generator<int, bool> $iterableFactory */
         $iterableFactory = static function (): Generator {
             yield 1 => true;
             yield 2 => false;

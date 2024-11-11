@@ -29,8 +29,8 @@
         "infection/infection": "^0.29.0",
         "php-ds/php-ds": "^1.4",
         "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan": "^1.11",
-        "phpstan/phpstan-phpunit": "^1.0.0",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0.0",
         "phpunit/phpunit": "^11.0",
         "shipmonk/composer-dependency-analyser": "^1.5"
     },
