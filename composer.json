@@ -20,8 +20,7 @@
     ],
     "require": {
         "php": "^8.3",
-        "ext-ds": "*",
-        "azjezz/psl": "^3.0 || ^4.0"
+        "ext-ds": "*"
     },
     "require-dev": {
         "cdn77/coding-standard": "^7.0",
