@@ -21,7 +21,7 @@
     "require": {
         "php": "^8.2",
         "ext-ds": "*",
-        "azjezz/psl": "^2.9 || ^3.0"
+        "azjezz/psl": "^3.0 || ^4.0"
     },
     "require-dev": {
         "cdn77/coding-standard": "^7.0",
