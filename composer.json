@@ -25,7 +25,7 @@
     "require-dev": {
         "cdn77/coding-standard": "^7.0",
         "ergebnis/composer-normalize": "^2.23",
-        "infection/infection": "^0.31.0",
+        "infection/infection": "^0.32.0",
         "php-ds/php-ds": "^1.4",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^2.0",
