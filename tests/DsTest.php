@@ -64,7 +64,6 @@ final class DsTest extends TestCase
 
         $map = mappedQueuesFromIterable(
             $iterableFactory(),
-            /** @phpstan-ignore argument.type */
             static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
@@ -90,7 +89,6 @@ final class DsTest extends TestCase
 
         $map = mappedSetsFromIterable(
             $iterableFactory(),
-            /** @phpstan-ignore argument.type */
             static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
         );
 
