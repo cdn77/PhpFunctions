@@ -87,6 +87,38 @@ function mappedQueuesFromIterable(iterable $iterable, callable $mapper): Map
 
 /**
  * @param iterable<K, V> $iterable
+ * @param callable(K, V): Pair<KReturn, Pair<KInner, VReturn>> $mapper
+ *
+ * @return Map<KReturn, Map<KInner, VReturn>>
+ *
+ * @template K
+ * @template V
+ * @template KReturn
+ * @template KInner
+ * @template VReturn
+ */
+function mappedMapsFromIterable(iterable $iterable, callable $mapper): Map
+{
+    /** @var Map<KReturn, Map<KInner, VReturn>> $map */
+    $map = new Map();
+
+    foreach ($iterable as $key => $value) {
+        $keyValue = $mapper($key, $value);
+        $innerMap = $map->get($keyValue->key, null);
+        if ($innerMap === null) {
+            /** @var Map<KInner, VReturn> $innerMap */
+            $innerMap = new Map();
+            $map->put($keyValue->key, $innerMap);
+        }
+
+        $innerMap->put($keyValue->value->key, $keyValue->value->value);
+    }
+
+    return $map;
+}
+
+/**
+ * @param iterable<K, V> $iterable
  * @param callable(K, V): Pair<KReturn, VReturn> $mapper
  *
  * @return Map<KReturn, Set<VReturn>>
