@@ -58,6 +58,24 @@ $map = mapFromEntries([
 assert($map->get('foo') === 'bar');
 ```
 
+### `mappedMapsFromIterable()`
+
+Groups an iterable into a `Map<K, Map<KInner, V>>` using a mapper that returns nested `Pair`s.
+
+```php
+use Ds\Pair;
+use function Cdn77\Functions\mappedMapsFromIterable;
+
+$map = mappedMapsFromIterable(
+    ['a' => 1, 'b' => 2, 'c' => 1],
+    static fn (string $key, int $value) => new Pair($value, new Pair($key, $key . '_')),
+);
+
+assert($map->get(1)->get('a') === 'a_');
+assert($map->get(1)->get('c') === 'c_');
+assert($map->get(2)->get('b') === 'b_');
+```
+
 ## Iterable
 
 ### find()
