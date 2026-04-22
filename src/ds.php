@@ -150,6 +150,37 @@ function mappedSetsFromIterable(iterable $iterable, callable $mapper): Map
 
 /**
  * @param iterable<K, V> $iterable
+ * @param callable(K, V): Pair<KReturn, VReturn> $mapper
+ *
+ * @return Map<KReturn, Vector<VReturn>>
+ *
+ * @template K
+ * @template V
+ * @template KReturn
+ * @template VReturn
+ */
+function mappedVectorsFromIterable(iterable $iterable, callable $mapper): Map
+{
+    /** @var Map<KReturn, Vector<VReturn>> $map */
+    $map = new Map();
+
+    foreach ($iterable as $key => $value) {
+        $keyValue = $mapper($key, $value);
+        $vector = $map->get($keyValue->key, null);
+        if ($vector === null) {
+            /** @var Vector<VReturn> $vector */
+            $vector = new Vector();
+            $map->put($keyValue->key, $vector);
+        }
+
+        $vector->push($keyValue->value);
+    }
+
+    return $map;
+}
+
+/**
+ * @param iterable<K, V> $iterable
  * @param callable(K,V): VReturn $mapper
  *
  * @return Set<VReturn>

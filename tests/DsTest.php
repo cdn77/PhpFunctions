@@ -14,6 +14,7 @@ use function Cdn77\Functions\mapFromIterable;
 use function Cdn77\Functions\mappedMapsFromIterable;
 use function Cdn77\Functions\mappedQueuesFromIterable;
 use function Cdn77\Functions\mappedSetsFromIterable;
+use function Cdn77\Functions\mappedVectorsFromIterable;
 use function Cdn77\Functions\setFromIterable;
 use function Cdn77\Functions\vectorFromIterable;
 
@@ -21,6 +22,7 @@ use function Cdn77\Functions\vectorFromIterable;
 #[CoversFunction('Cdn77\Functions\mappedMapsFromIterable')]
 #[CoversFunction('Cdn77\Functions\mappedQueuesFromIterable')]
 #[CoversFunction('Cdn77\Functions\mappedSetsFromIterable')]
+#[CoversFunction('Cdn77\Functions\mappedVectorsFromIterable')]
 #[CoversFunction('Cdn77\Functions\setFromIterable')]
 #[CoversFunction('Cdn77\Functions\vectorFromIterable')]
 final class DsTest extends TestCase
@@ -93,7 +95,12 @@ final class DsTest extends TestCase
 
         $map = mappedQueuesFromIterable(
             $iterableFactory(),
-            static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
+            static function (int $key, string $value): Pair {
+                /** @phpstan-var non-falsy-string $mappedValue */
+                $mappedValue = $value . '_';
+
+                return new Pair($key * 2, $mappedValue);
+            },
         );
 
         self::assertCount(2, $map);
@@ -118,12 +125,41 @@ final class DsTest extends TestCase
 
         $map = mappedSetsFromIterable(
             $iterableFactory(),
-            static fn (int $key, string $value) => new Pair($key * 2, $value . '_'),
+            static function (int $key, string $value): Pair {
+                /** @phpstan-var non-falsy-string $mappedValue */
+                $mappedValue = $value . '_';
+
+                return new Pair($key * 2, $mappedValue);
+            },
         );
 
         self::assertCount(2, $map);
         self::assertTrue($map->get(2)->contains('a_', 'b_'));
         self::assertTrue($map->get(4)->contains('a_', 'b_'));
+    }
+
+    public function testMappedVectorsFromIterable(): void
+    {
+        $iterableFactory = static function (): Generator {
+            yield 1 => 'a';
+            yield 1 => 'b';
+            yield 2 => 'c';
+            yield 2 => 'd';
+        };
+
+        $map = mappedVectorsFromIterable(
+            $iterableFactory(),
+            static function (int $key, string $value): Pair {
+                /** @phpstan-var non-falsy-string $mappedValue */
+                $mappedValue = $value . '_';
+
+                return new Pair($key * 2, $mappedValue);
+            },
+        );
+
+        self::assertCount(2, $map);
+        self::assertSame(['a_', 'b_'], $map->get(2)->toArray());
+        self::assertSame(['c_', 'd_'], $map->get(4)->toArray());
     }
 
     public function testSetFromIterable(): void
