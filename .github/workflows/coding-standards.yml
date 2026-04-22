@@ -25,7 +25,7 @@ jobs:
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v3"
+        uses: "ramsey/composer-install@4.0.0"
 
       - name: "Run PHP_CodeSniffer"
         run: "vendor/bin/phpcs -q --no-colors --report=checkstyle | cs2pr"
@@ -47,7 +47,7 @@ jobs:
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v3"
+        uses: "ramsey/composer-install@4.0.0"
 
       - name: "Run PHP_CodeSniffer"
         run: "composer normalize --dry-run"
