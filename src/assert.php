@@ -9,8 +9,10 @@ use Throwable;
 use function assert;
 
 /**
- * @param TValue $assertionFn
+ * @param TValue $value
  * @param callable(TValue):(bool|string) $assertionFn
+ *
+ * @return TValue
  *
  * @template TValue
  */
