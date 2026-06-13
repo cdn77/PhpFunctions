@@ -21,7 +21,7 @@ jobs:
         with:
           php-version: "8.4"
           coverage: "none"
-          extensions: "ds, mbstring"
+          extensions: "ds-1.8.0, mbstring"
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
@@ -43,7 +43,7 @@ jobs:
         with:
           php-version: "8.4"
           coverage: "none"
-          extensions: "ds, mbstring"
+          extensions: "ds-1.8.0, mbstring"
           tools: "cs2pr"
 
       - name: "Install dependencies with Composer"
