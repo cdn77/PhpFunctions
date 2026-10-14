@@ -58,6 +58,19 @@ $map = mapFromEntries([
 assert($map->get('foo') === 'bar');
 ```
 
+### Map mutation helpers
+
+These functions mutate the supplied `Ds\Map` and follow Java `Map` null and return-value rules.
+
+| Function | Behavior | Return value |
+| --- | --- | --- |
+| `mapPutIfAbsent($map, $key, $value)` | Stores the value if the key is missing or mapped to `null`. | The previous value, or `null`. |
+| `mapCompute($map, $key, $computer)` | Calls `$computer($key, $currentValue)`, using `null` for a missing key. Stores a non-null result; removes the key for a null result. | The computed value, or `null`. |
+| `mapComputeIfAbsent($map, $key, $computer)` | Calls `$computer($key)` only if the key is missing or mapped to `null`. Stores a non-null result; leaves the map unchanged for a null result. | The existing or computed value, or `null`. |
+| `mapComputeIfPresent($map, $key, $computer)` | Calls `$computer($key, $currentValue)` only for a non-null current value. Stores a non-null result; removes the key for a null result. | The computed value, or `null` if skipped or removed. |
+
+Compute callbacks must not modify the same map during computation.
+
 ### `mappedMapsFromIterable()`
 
 Groups an iterable into a `Map<K, Map<KInner, V>>` using a mapper that returns nested `Pair`s.
