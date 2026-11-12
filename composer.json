@@ -60,6 +60,9 @@
             "includes": [
                 "phpstan-extension.neon"
             ]
+        },
+        "skills": {
+            "source": "skills"
         }
     }
 }
