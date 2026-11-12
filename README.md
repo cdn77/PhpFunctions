@@ -5,6 +5,11 @@
 [![Downloads][Downloads Image]][Packagist Link]
 [![Packagist][Packagist Image]][Packagist Link]
 
+## Agent skill
+
+The [cdn77-functions skill](skills/cdn77-functions/SKILL.md) guides AI coding agents
+on helper selection, unreachable code, assertions, collections, and generators.
+
 ## Functions
 
 ### absurd()
